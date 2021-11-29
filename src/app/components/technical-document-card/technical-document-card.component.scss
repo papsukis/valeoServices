@@ -1,0 +1,54 @@
+.container{
+  max-height: 630px;
+  max-width: calc(100% - 16px);
+  height:calc(100% - 16px);
+  margin: 15px;
+}
+.chips-wrapper{
+  margin-top: 8px;
+  width: 100%;
+  // overflow-y: auto;
+  display:flex;
+  flex-wrap: wrap;
+
+}
+.content-wrapper{
+  display: grid;
+  grid-template-rows:200px 100px 160px;
+  height: 100%;
+  padding-top:5px;
+
+  overflow: hidden;
+}
+.refs-wrapper{
+  // grid-row: ;
+}
+.form-wrapper{
+  font-size: 12px;
+  height: 100%;
+
+}
+.snippet-wrapper{
+
+  overflow-y: auto;
+}
+
+
+.mat-card{
+  display:flex;
+  flex-direction: column;
+}
+
+.mat-card-header {
+  flex-shrink: 0;
+}
+
+.mat-card-content{
+  flex-grow: 1;
+  overflow: hidden;
+}
+.example-full-width {
+  width: 100%;
+  cursor:pointer;
+  font-size: 12px;
+}

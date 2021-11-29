@@ -1,0 +1,14 @@
+.wrapper{
+
+  display:grid;
+  grid-template-rows: 95% 5%
+}
+.result-list{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows : repeat(autofill,minmax(200px,1fr));
+  gap : 10px;
+}
+.card{
+  height: 680px;
+}

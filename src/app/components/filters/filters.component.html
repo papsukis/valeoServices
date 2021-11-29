@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <div class="search-field">
+      <mat-form-field style="margin-top: 10px;">
+        <mat-label>Reference</mat-label>
+        <input matInput type="text" [(ngModel)]="referenceName" (keyup.enter)="onSearchByReference()">
+        <button *ngIf="referenceName" matSuffix mat-icon-button aria-label="Clear" (click)="referenceName='';">
+          <mat-icon>close</mat-icon>
+        </button>
+
+      </mat-form-field>
+      <button mat-icon-button aria-label="Clear" (click)="onSearchByReference()">
+        <mat-icon>search</mat-icon>
+      </button>
+  </div>
+  <div class="search-field">
+    <mat-form-field style="margin-top: 10px;">
+      <mat-label>Nom produit</mat-label>
+      <input matInput type="text" [(ngModel)]="productName" (keyup.enter)="onSearchByProductName()">
+      <button *ngIf="productName" matSuffix mat-icon-button aria-label="Clear" (click)="productName='';" >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-icon-button aria-label="Clear" (click)="onSearchByProductName()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <div class="search-field">
+    <mat-form-field style="margin-top: 10px;">
+      <mat-label>Famille de produit</mat-label>
+      <input matInput type="text" [(ngModel)]="productFamily" (keyup.enter)="onSearchByProductFamily()">
+      <button *ngIf="productFamily" matSuffix mat-icon-button aria-label="Clear" (click)="productFamily='';">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-icon-button aria-label="Clear" (click)="onSearchByProductFamily()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <div class="search-field">
+    <mat-form-field style="margin-top: 10px;">
+      <mat-label>Ligne de produits</mat-label>
+      <input matInput type="text" [(ngModel)]="lineOfBusiness" (keyup.enter)="onSearchByLineOfBusiness()">
+      <button *ngIf="lineOfBusiness" matSuffix mat-icon-button aria-label="Clear" (click)="lineOfBusiness='';">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-icon-button aria-label="Clear" (click)="onSearchByLineOfBusiness()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+</div>

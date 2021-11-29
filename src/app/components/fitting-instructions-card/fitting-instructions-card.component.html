@@ -1,0 +1,80 @@
+
+<div class="container">
+  <mat-card style="height: 100%;">
+    <mat-card-title>{{technicalDocument.title}}</mat-card-title>
+    <mat-card-subtitle>Notice de montage</mat-card-subtitle>
+    <mat-divider inset></mat-divider>
+    <mat-card-content>
+
+    <div class="content-wrapper">
+
+      <div class="form-wrapper">
+        <mat-form-field class="example-full-width" appearance="fill" (click)="copyToClipboard(technicalDocument.product)">
+          <mat-label>Nom produit</mat-label>
+          <input matInput disabled value="{{technicalDocument.product}}" >
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" (click)="copyToClipboard(technicalDocument.component)">
+          <mat-label>Famille de produit</mat-label>
+          <input matInput disabled value="{{technicalDocument.component}}">
+        </mat-form-field>
+        <mat-divider inset></mat-divider>
+      </div>
+      <div class="snippet-wrapper">
+        <h4 class="title">Application</h4>
+        <span>{{technicalDocument.snippet.fi_applications}}</span>
+        <mat-divider inset></mat-divider>
+        <h4 class="title">Mesures</h4>
+        <span>{{technicalDocument.snippet.fi_caution}}</span>
+        <mat-divider inset></mat-divider>
+        <h4 class="title">Instructions de montage</h4>
+        <span>{{technicalDocument.snippet.fi_fitting_instructions}}</span>
+        <mat-divider inset></mat-divider>
+        <h4 class="title">Apres assemblage</h4>
+        <span>{{technicalDocument.snippet.fi_after_the_assembly}}</span>
+
+      </div>
+
+                    <div class="ref-wrapper" *ngIf="technicalDocument.refs">
+                      <mat-form-field >
+                        <mat-label>Reference</mat-label>
+                        <input matInput type="text" [(ngModel)]="refSearch" (ngModelChange)="search($event)">
+                        <button *ngIf="refSearch" matSuffix mat-icon-button aria-label="Clear" (click)="refSearch='';currentRefs=technicalDocument.refs" >
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </mat-form-field>
+                      <mat-list dense>
+                        <div class="chips-wrapper">
+                          <cdk-virtual-scroll-viewport itemSize="50" style="height:120px;width: 100%;">
+                            <ng-container *cdkVirtualFor="let item of currentRefs">
+                              <mat-list-item style="cursor: pointer"(click)="copyToClipboard(item)">{{item}}</mat-list-item>
+                            </ng-container>
+                          </cdk-virtual-scroll-viewport>
+                          <div style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none"></div>
+                        </div>
+                      </mat-list>
+                    </div>
+
+
+
+
+    </div>
+
+
+
+    </mat-card-content>
+    <div style="display: flex;justify-content: space-around; align-items: center;">
+      <button mat-mini-fab color="primary" (click)="goToLink(technicalDocument.documents[0])">
+        <mat-icon>description</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary"  (click)="goToLink(technicalDocument.url)">
+        <mat-icon>link</mat-icon>
+      </button>
+    </div>
+    <mat-card-actions>
+
+
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+

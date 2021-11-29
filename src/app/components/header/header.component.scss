@@ -1,0 +1,22 @@
+.header-wrapper{
+  height: 100%;
+  display: grid;
+  grid-template-columns: 15% 0.4fr 4fr 1fr 0.4fr 0.3fr;
+  justify-content: space-between;
+  align-items: center;
+  gap:15px;
+  user-select: none;
+}
+.logo{
+  max-height: 100px;
+  max-width: 150px;
+  justify-self: center;
+  align-self: center;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
+}
+.logo-grid{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  box-shadow: 0 5px 10px rgba(91,91,91,.1);
+}

@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="result-list">
+    <ng-container *ngFor="let item of resultsList.technical_document">
+      <technical-document-card [technicalDoc]="item" class="card"></technical-document-card>
+    </ng-container>
+    <ng-container *ngFor="let item of resultsList.technical_bulletin">
+      <technical-bulletin-card [technicalDoc]="item" class="card"></technical-bulletin-card>
+    </ng-container>
+    <ng-container *ngFor="let item of resultsList.fitting_instruction">
+      <fitting-instructions-card [technicalDoc]="item" class="card"></fitting-instructions-card>
+    </ng-container>
+  </div>
+  <div class="pagination">
+
+  </div>
+</div>

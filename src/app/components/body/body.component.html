@@ -1,0 +1,14 @@
+<div class="wrap">
+  <div class="filters">
+    <filters
+    (searchByReference)="onSearchByReference($event)"
+    (searchByProductName)="onSearchByProductName($event)"
+    (searchByProductFamily)="onSearchByProductFamily($event)"
+    (searchByLineOfBusiness)="onSearchByLineOfBusiness($event)"></filters>
+  </div>
+  <mat-divider ></mat-divider>
+  <div class="results">
+    <results [resultsList]="result"></results>
+  </div>
+</div>
+
