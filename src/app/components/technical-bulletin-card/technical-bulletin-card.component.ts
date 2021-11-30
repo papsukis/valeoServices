@@ -15,7 +15,7 @@ export class TechnicalBulletinCardComponent implements OnInit {
   @Input() set technicalDoc(value: TechnicalBulletin) {
     this.technicalDocument = value;
     this.currentRefs=value.refs;
-    console.log(value)
+    
   }
   currentRefs:string[]=[];
   constructor(private clipboard: Clipboard) { }

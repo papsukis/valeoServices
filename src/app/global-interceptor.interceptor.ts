@@ -11,11 +11,12 @@ import { TokenStorageService } from './services/token-storage.service';
 import { ValeoService } from './services/valeo.service';
 import { credentials, tokenUrl } from './services/credentials';
 import { catchError } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class GlobalInterceptorInterceptor implements HttpInterceptor {
 
-  constructor(protected userService : TokenStorageService,protected valeoService:ValeoService) {}
+  constructor(private toastr: ToastrService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -48,5 +49,18 @@ export class GlobalInterceptorInterceptor implements HttpInterceptor {
   //     }))
   // ;}
   // }
-  return next.handle(request)
-}}
+  return next.handle(request).pipe(
+          catchError((error) =>{
+            console.log(error)
+            if(error.status==404){
+              this.toastr.error(error.error.message)
+            }
+            if(error.status==403){
+              this.toastr.error(error.error.message)
+            }
+            if(error.status==402){
+              this.toastr.error(error.error.message)
+            }
+            return throwError(error.error.message);
+          } ))}
+}

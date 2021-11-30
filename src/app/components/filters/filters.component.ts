@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { eLanguage } from 'src/app/models/response';
+import { language, languages } from './languages';
 
 @Component({
   selector: 'filters',
@@ -11,6 +13,10 @@ export class FiltersComponent implements OnInit {
   productName:string="";
   productFamily:string="";
   lineOfBusiness:string="";
+  languages : language[] = languages;
+  selectedLanguage : language = languages[0];
+  readonly iLanguages =eLanguage;
+  @Output() selectLanguage : EventEmitter<language> =new EventEmitter();
   @Output() searchByReference : EventEmitter<string> =new EventEmitter();
   @Output() searchByProductName : EventEmitter<string> =new EventEmitter();
   @Output() searchByProductFamily : EventEmitter<string> =new EventEmitter();
@@ -34,7 +40,9 @@ export class FiltersComponent implements OnInit {
     this.searchByLineOfBusiness.emit(this.lineOfBusiness)
   }
 
-  // converter(stringToConvert:string):string{
-  //   return stringToConvert.
-  // }
+  onSelectLanguage(event : any){
+    console.log(this.selectedLanguage)
+    this.selectLanguage.emit(this.selectedLanguage)
+  }
+
 }

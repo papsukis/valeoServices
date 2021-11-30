@@ -1,51 +1,71 @@
 <div class="wrapper">
-  <div class="search-field">
-      <mat-form-field style="margin-top: 10px;">
-        <mat-label>Reference</mat-label>
-        <input matInput type="text" [(ngModel)]="referenceName" (keyup.enter)="onSearchByReference()">
-        <button *ngIf="referenceName" matSuffix mat-icon-button aria-label="Clear" (click)="referenceName='';">
-          <mat-icon>close</mat-icon>
-        </button>
 
-      </mat-form-field>
-      <button mat-icon-button aria-label="Clear" (click)="onSearchByReference()">
+      
+      <div class="input-group input-group-sm mb-3 reference">
+        
+        <input 
+        placeholder="Reference"
+        type="text" 
+        class="form-control" 
+        [(ngModel)]="referenceName"
+        (keyup.enter)="onSearchByReference()">
+        <div class="input-group-text" id="inputGroup-sizing-sm"(click)="onSearchByReference()">
+          
+          <mat-icon>search</mat-icon>
+        </div>
+      </div>
+      
+      <div class="input-group input-group-sm mb-3 product-name" >
+        
+        <input 
+        placeholder="Nom produit"
+        type="text" 
+        class="form-control" 
+        [(ngModel)]="productName" 
+        (keyup.enter)="onSearchByProductName()">
+        <div class="input-group-text" id="inputGroup-sizing-sm"(click)="onSearchByProductName()">
+          
+          <mat-icon>search</mat-icon>
+        </div>
+      </div>
+
+  <div class="input-group input-group-sm mb-3 product-family" >
+
+    <input 
+    placeholder="Famille de produit"
+    type="text" 
+    class="form-control" 
+    [(ngModel)]="productFamily" 
+    (keyup.enter)="onSearchByProductFamily()">
+    <div class="input-group-text" id="inputGroup-sizing-sm"(click)="onSearchByProductFamily()">
+      
         <mat-icon>search</mat-icon>
-      </button>
+    </div>
   </div>
-  <div class="search-field">
-    <mat-form-field style="margin-top: 10px;">
-      <mat-label>Nom produit</mat-label>
-      <input matInput type="text" [(ngModel)]="productName" (keyup.enter)="onSearchByProductName()">
-      <button *ngIf="productName" matSuffix mat-icon-button aria-label="Clear" (click)="productName='';" >
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <button mat-icon-button aria-label="Clear" (click)="onSearchByProductName()">
-      <mat-icon>search</mat-icon>
-    </button>
+
+  <div class="input-group input-group-sm mb-3 line-of-business" >
+
+    <input 
+    placeholder="Ligne de produits"
+    type="text" 
+    class="form-control" 
+    [(ngModel)]="lineOfBusiness" 
+    (keyup.enter)="onSearchByLineOfBusiness()">
+    <div class="input-group-text" id="inputGroup-sizing-sm"(click)="onSearchByLineOfBusiness()">
+      
+        <mat-icon>search</mat-icon>
+    </div>
   </div>
-  <div class="search-field">
-    <mat-form-field style="margin-top: 10px;">
-      <mat-label>Famille de produit</mat-label>
-      <input matInput type="text" [(ngModel)]="productFamily" (keyup.enter)="onSearchByProductFamily()">
-      <button *ngIf="productFamily" matSuffix mat-icon-button aria-label="Clear" (click)="productFamily='';">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <button mat-icon-button aria-label="Clear" (click)="onSearchByProductFamily()">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div>
-  <div class="search-field">
-    <mat-form-field style="margin-top: 10px;">
-      <mat-label>Ligne de produits</mat-label>
-      <input matInput type="text" [(ngModel)]="lineOfBusiness" (keyup.enter)="onSearchByLineOfBusiness()">
-      <button *ngIf="lineOfBusiness" matSuffix mat-icon-button aria-label="Clear" (click)="lineOfBusiness='';">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <button mat-icon-button aria-label="Clear" (click)="onSearchByLineOfBusiness()">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div>
+<div class="select-area">
+  <select class="form-select " aria-label="Default select example" 
+  [(ngModel)]="selectedLanguage" 
+  (change)="onSelectLanguage($event.target)">
+    <ng-container *ngFor="let item of languages">
+      <option [ngValue]="item">{{item.label}}</option>
+    </ng-container>
+    <!-- <option selected (click)="selectLanguage(item)">Open this select menu</option> -->
+  </select>
+</div>
+
+
 </div>

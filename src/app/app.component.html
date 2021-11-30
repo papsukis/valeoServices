@@ -1,11 +1,8 @@
-<div class="wrapper">
-<header>
-</header>
-<div>
-  <app-body></app-body>
-</div>
-</div>
-<a class="float" (click)="scrollToTop()">
-  <mat-icon class="my-float">navigation</mat-icon>
+<div class="container-fluid wrapper">
 
-  <ngx-spinner [fullScreen]="false" type="ball-clip-rotate-pulse" size="medium"><ng-content></ng-content></ngx-spinner>
+
+  <app-body></app-body>
+  <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-pulse" size="medium"><ng-content></ng-content></ngx-spinner>
+
+
+</div>

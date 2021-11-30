@@ -15,7 +15,7 @@ export class TechnicalDocumentCardComponent implements OnInit {
   @Input() set technicalDoc(value: TechnicalDocument) {
     this.technicalDocument = value;
     this.currentRefs=value.refs;
-    console.log(value)
+    
   }
   currentRefs:string[]=[];
   constructor(private clipboard: Clipboard) { }

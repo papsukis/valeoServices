@@ -1,11 +1,47 @@
 .wrapper{
  display: grid;
- grid-template-columns: 1fr 1fr;
+ grid-template-columns: 1fr 1fr 1fr;
  grid-template-rows: 1fr 1fr;
+ grid-template-areas: 
+ "reference productName ."
+ "productFamily lineOfBusiness select"
+ ;
  height: 100%;
  align-items: center;
  justify-items: center;
+ padding:15px;
 }
-.search-field{
 
+.reference{
+    grid-area : reference;
+    padding:10px 15%
 }
+.product-name{
+    grid-area : productName;
+    padding:10px 15%
+}
+.product-family{
+    grid-area : productFamily;
+    padding:10px 15%
+}
+.line-of-business{
+    grid-area : lineOfBusiness;
+    padding:10px 15%
+}
+.select-area{
+    grid-area : select;
+    padding: 10px 15%
+}
+// @media only screen (min-width: 768px) { @content; }
+@media screen and (max-width: 480px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+        "reference"
+        "productName"
+        "productFamily"
+        "lineOfBusiness"
+        "select";
+    }
+  }

@@ -1,14 +1,33 @@
 .wrapper{
 
   display:grid;
-  grid-template-rows: 95% 5%
+  grid-template-rows: 95% 5%;
+  height:100%;
+
 }
 .result-list{
   display:grid;
   grid-template-columns: repeat(3,1fr);
   grid-template-rows : repeat(autofill,minmax(200px,1fr));
   gap : 10px;
+  height: 100%;
+  overflow: auto;
 }
 .card{
   height: 680px;
+}
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#3A89C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+.my-float{
+	margin-top:18px;
 }
