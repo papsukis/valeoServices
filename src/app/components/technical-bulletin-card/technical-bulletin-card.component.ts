@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TechnicalBulletin } from 'src/app/models/technical-bulletin';
 import { Clipboard } from "@angular/cdk/clipboard"
+import { MatDialog } from '@angular/material/dialog';
+import { RefsDialogComponent } from '../refs-dialog/refs-dialog.component';
 
 @Component({
   selector: 'technical-bulletin-card',

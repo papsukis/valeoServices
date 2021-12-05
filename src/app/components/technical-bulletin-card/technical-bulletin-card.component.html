@@ -99,24 +99,24 @@
           </div>
         </div>
       </div>
-
-    <div class="form-group">
-      <label for="referenceInput">Ligne de produits</label>
+      <div class="form-group">
+      <label for="referenceInput">Famille de produit</label>
       <div class="input-group input-group-sm mb-3 reference">
 
-          <input
-          placeholder="Reference"
-          type="text"
-          class="form-control form-control-sm"
-          id="referenceInput"
-          [(ngModel)]="technicalDocument.lob"
-          disabled>
-          <div class="input-group-text"style="cursor: pointer;" id="inputGroup-sizing-sm"(click)="copyToClipboard(technicalDocument.lob)">
+        <input
 
-            <mat-icon>content_copy</mat-icon>
-          </div>
+        type="text"
+        class="form-control form-control-sm"
+        id="referenceInput"
+        [(ngModel)]="technicalDocument.component"
+        disabled>
+        <div class="input-group-text" style="cursor: pointer;" id="inputGroup-sizing-sm"(click)="copyToClipboard(technicalDocument.component)">
+
+          <mat-icon>content_copy</mat-icon>
         </div>
       </div>
+      </div>
+
     </li>
     <li class="list-group-item">
       <div class="snippet-wrapper"  [innerHTML]="technicalDocument.snippet">
@@ -125,12 +125,6 @@
    </li>
 
   </ul>
-
-
-
-
-
-
 
   <div class="card-body">
     <div style="display: flex;justify-content: space-around; align-items: center;">

@@ -22,7 +22,8 @@ export class BodyComponent implements OnInit {
   }
 
   scrollTo(section:string) {
-    document.querySelector('#' + section)!
+    let el=document.getElementById('element_within_div')
+    document.getElementById('scrolling_div')!
     .scrollIntoView();
   }
 
