@@ -1,15 +1,24 @@
 <a name="top"></a>
 <div class="wrapper">
 
-  <div class="result-list">
+
+  <div class="result-list row">
+
     <ng-container *ngFor="let item of resultsList.technical_document">
-      <technical-document-card [technicalDoc]="item" class="card"></technical-document-card>
+      <div class='col-sm-12 col-lg-4 col-xl-3 row' id="technical_document">
+        <technical-document-card [technicalDoc]="item" class="card"></technical-document-card>
+      </div>
     </ng-container>
     <ng-container *ngFor="let item of resultsList.technical_bulletin">
-      <technical-bulletin-card [technicalDoc]="item" class="card"></technical-bulletin-card>
+      <div class='col-sm-12 col-lg-4 col-xl-3 row' id="technical_bulletin">
+          <technical-bulletin-card [technicalDoc]="item" class="card"></technical-bulletin-card>
+      </div>
+
     </ng-container>
     <ng-container *ngFor="let item of resultsList.fitting_instruction">
-      <fitting-instructions-card [technicalDoc]="item" class="card"></fitting-instructions-card>
+      <div class='col-sm-12 col-lg-4 col-xl-3 row' id="fitting_instruction">
+        <fitting-instructions-card [technicalDoc]="item" class="card"></fitting-instructions-card>      </div>
+
     </ng-container>
   </div>
   <div class="pagination">
@@ -19,4 +28,3 @@
 <a class="float" href="#top">
   <mat-icon class="my-float">navigation</mat-icon>
 
- 

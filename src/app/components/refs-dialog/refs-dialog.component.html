@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <div class="input-group input-group-sm mb-3 reference">
+
+    <input
+    placeholder="Reference"
+    type="text"
+    class="form-control form-control-sm"
+    id="referenceInput"
+    [(ngModel)]="refSearch"
+    (ngModelChange)="search($event)"
+    >
+    <div class="input-group-text" style="cursor: pointer;" id="inputGroup-sizing-sm">
+
+      <mat-icon>search</mat-icon>
+    </div>
+  </div>
+
+    <mat-chip-list >
+      <!-- <cdk-virtual-scroll-viewport itemSize="32" minBufferPx="300" maxBufferPx="350" style="min-height:100%;height:350px;width: 100%;"> -->
+        <div class="chips-wrapper">
+        <ng-container *ngFor="let item of currentRefs">
+          <mat-chip style="cursor: pointer">{{item}}
+            <button matChipRemove (click)="copyToClipboard(item)">
+            <mat-icon>content_copy</mat-icon>
+          </button></mat-chip>
+
+        </ng-container>
+      <!-- </cdk-virtual-scroll-viewport> -->
+        </div>
+    </mat-chip-list>
+
+
+        <paginator
+        [size]="filteredRefs.length"
+        [numberPerPage]="50"
+        [currentPage]="currentPage"
+        (onClick)="pageChanged($event)"
+        ></paginator>
+
+</div>

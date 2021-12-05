@@ -17,3 +17,18 @@ button:focus, button:active:focus, button.active:focus {
     color:#1B325F;
     font-weight: 600;
     }
+
+    :root {
+      --primary : #1B325F;
+      --secondary : #9CC4E4;
+      --white : #E9F2F9;
+      --light-blue : #3A89C9;
+      --red : #eb1c30;
+      --cobalt : #44749D;
+      --light-gray : #EBE7E0;
+      --gray : #BDB8AD;
+      --select-border:var(--light-gray);
+      --select-focus: var(--light-blue);
+      --select-arrow: var(--select-border);
+
+    }

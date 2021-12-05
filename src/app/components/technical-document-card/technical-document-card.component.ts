@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TechnicalDocument } from 'src/app/models/technical-document';
 import { Clipboard } from "@angular/cdk/clipboard"
+import { MatDialog } from '@angular/material/dialog';
+import { RefsDialogComponent } from '../refs-dialog/refs-dialog.component';
 
 @Component({
   selector: 'technical-document-card',
@@ -15,10 +17,10 @@ export class TechnicalDocumentCardComponent implements OnInit {
   @Input() set technicalDoc(value: TechnicalDocument) {
     this.technicalDocument = value;
     this.currentRefs=value.refs;
-    
+
   }
   currentRefs:string[]=[];
-  constructor(private clipboard: Clipboard) { }
+  constructor(private clipboard: Clipboard,public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -32,5 +34,16 @@ export class TechnicalDocumentCardComponent implements OnInit {
   goToLink(url: string){
     window.open(url, "_blank");
 }
+  open(){
+    const dialogRef = this.dialog.open(RefsDialogComponent, {
 
-}
+      data: {refs: this.currentRefs}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
+
+  }

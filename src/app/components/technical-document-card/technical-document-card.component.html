@@ -1,15 +1,14 @@
 
-<div class="container">
-  <mat-card style="height: 100%;">
-    <mat-card-title>{{technicalDocument.title}}</mat-card-title>
-    <mat-card-subtitle>{{technicalDocument.topic}}</mat-card-subtitle>
+  <!-- <mat-card style="height: 100%;">
+    <mat-card-title>Document technique</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
     <mat-divider inset></mat-divider>
     <mat-card-content>
 
     <div class="content-wrapper">
 
 
-
+      {{technicalDocument.title}}
 
 
       <div class="form-wrapper">
@@ -44,11 +43,11 @@
                       </mat-form-field>
                       <mat-list dense>
                         <div class="chips-wrapper">
-                          <!-- <cdk-virtual-scroll-viewport itemSize="50" style="height:120px;width: 100%;"> -->
+
                             <ng-container *ngFor="let item of currentRefs">
                               <mat-list-item style="cursor: pointer"(click)="copyToClipboard(item)">{{item}}</mat-list-item>
                             </ng-container>
-                          <!-- </cdk-virtual-scroll-viewport> -->
+
                           <div style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none"></div>
                         </div>
                       </mat-list>
@@ -74,6 +73,124 @@
 
 
     </mat-card-actions>
-  </mat-card>
+  </mat-card> -->
 
-</div>
+  <div class="card" style="width: 100%;">
+    <div class="card-header text-center">
+      Document technique
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{technicalDocument.title}}</h5>
+      <p class="card-subtitle mb-2 text-muted">{{technicalDocument.topic}}</p>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="form-group">
+          <label for="referenceInput">Nom produit</label>
+          <div class="input-group input-group-sm mb-3 reference">
+
+            <input
+
+            type="text"
+            class="form-control form-control-sm"
+            id="referenceInput"
+            [(ngModel)]="technicalDocument.product"
+            disabled>
+            <div class="input-group-text" style="cursor: pointer;" id="inputGroup-sizing-sm"(click)="copyToClipboard(technicalDocument.product)">
+
+              <mat-icon>content_copy</mat-icon>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+        <label for="referenceInput">Famille de produit</label>
+        <div class="input-group input-group-sm mb-3 reference">
+
+          <input
+
+          type="text"
+          class="form-control form-control-sm"
+          id="referenceInput"
+          [(ngModel)]="technicalDocument.family"
+          disabled>
+          <div class="input-group-text" style="cursor: pointer;" id="inputGroup-sizing-sm"(click)="copyToClipboard(technicalDocument.family)">
+
+            <mat-icon>content_copy</mat-icon>
+          </div>
+        </div>
+        </div>
+      <div class="form-group">
+        <label for="referenceInput">Ligne de produits</label>
+        <div class="input-group input-group-sm mb-3 reference">
+
+            <input
+            placeholder="Reference"
+            type="text"
+            class="form-control form-control-sm"
+            id="referenceInput"
+            [(ngModel)]="technicalDocument.lob"
+            disabled>
+            <div class="input-group-text"style="cursor: pointer;" id="inputGroup-sizing-sm"(click)="copyToClipboard(technicalDocument.lob)">
+
+              <mat-icon>content_copy</mat-icon>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="snippet-wrapper"  [innerHTML]="technicalDocument.snippet">
+          </div>
+
+     </li>
+      <!-- <li class="list-group-item">
+        <div >
+
+          <mat-chip-list class="chips-wrapper">
+
+          <ng-container *ngFor="let item of currentRefs">
+            <mat-chip style="cursor: pointer">{{item}}
+              <button matChipRemove (click)="copyToClipboard(item)">
+              <mat-icon>content_copy</mat-icon>
+            </button></mat-chip>
+          </ng-container>
+
+          </mat-chip-list>
+
+        <div style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none"></div>
+      </div>
+
+    </li> -->
+    </ul>
+
+
+
+
+
+
+
+    <div class="card-body">
+      <div style="display: flex;justify-content: space-around; align-items: center;">
+
+          <button mat-mini-fab color="primary" (click)="goToLink(technicalDocument.documents[0])">
+            <t-tooltip tooltip="Document"><mat-icon>description</mat-icon></t-tooltip>
+
+          </button>
+
+
+        <button mat-mini-fab color="primary"  (click)="goToLink(technicalDocument.url)">
+          <t-tooltip tooltip="Url">
+          <mat-icon>link</mat-icon>
+        </t-tooltip>
+        </button>
+
+
+        <button mat-mini-fab color="primary"  (click)="open()">
+          <t-tooltip tooltip="References">
+          <mat-icon>open_in_new</mat-icon>
+          </t-tooltip>
+
+        </button>
+      </div>
+    </div>
+  </div>

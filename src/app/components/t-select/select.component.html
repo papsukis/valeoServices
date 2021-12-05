@@ -1,0 +1,11 @@
+<div class="select">
+  <select id="standard-select" [(ngModel)]="selectedOption" (ngModelChange)="newvalue.emit($event)">
+
+    <ng-container *ngFor="let option of options">
+      <option value="{{option}}">
+        <span>{{option}}</span>
+      </option>
+    </ng-container>
+  </select>
+  <span class="focus"></span>
+</div>

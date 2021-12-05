@@ -1,0 +1,92 @@
+
+<ng-container *ngIf="numberOfPage>0">
+  <div class="wrapper">
+    <div>
+      <span style="font-size: 12px;font-weight:550;color:var(--primary)">
+        Total :
+      </span>
+      <span  style="font-size: 12px;">
+        {{size}}
+      </span>
+    </div>
+
+
+    <div class="paginator-wrapper" >
+
+      <div class="paginator-option" [ngClass]="(currentPage==1)? 'paginator-disabled' : ''" (click)="goToPage(1)">
+        <img src="assets/img/double-left.png" style="width:14px" alt="">
+      </div>
+
+      <div class="paginator-option" [ngClass]="(currentPage==1)? 'paginator-disabled' : ''" (click)="precedent()">
+        <img src="assets/img/left.png" style="width:14px" alt="">
+      </div>
+
+        <ng-container *ngIf="currentPage==1 ">
+          <div class="paginator-option paginator-selected" >
+            {{currentPage}}
+          </div>
+          <div class="paginator-option" *ngIf="currentPage+1<=numberOfPage" (click)="goToPage(currentPage+1)">
+            {{currentPage+1}}
+          </div>
+          <div class="paginator-option" *ngIf="currentPage+2<=numberOfPage" (click)="goToPage(currentPage+2)">
+            {{currentPage+2}}
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="(currentPage!=1 && currentPage!=numberOfPage)">
+          <div class="paginator-option " (click)="goToPage(currentPage-1)" *ngIf="currentPage-1 >0">
+            {{currentPage-1}}
+          </div>
+          <div class="paginator-option paginator-selected" >
+            {{currentPage}}
+          </div>
+          <div class="paginator-option" *ngIf="currentPage+1 <= numberOfPage" (click)="goToPage(currentPage+1)">
+            {{currentPage+1}}
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="currentPage==numberOfPage && currentPage!=1">
+          <div class="paginator-option" *ngIf="currentPage-2 > 0 " (click)="goToPage(currentPage-2)">
+            {{currentPage-2}}
+          </div>
+          <div class="paginator-option" *ngIf="currentPage-1 > 0" (click)="goToPage(currentPage-1)">
+            {{currentPage-1}}
+          </div>
+          <div class="paginator-option paginator-selected" >
+            {{currentPage}}
+          </div>
+        </ng-container>
+
+
+
+        <div class="paginator-option" [ngClass]="(currentPage==numberOfPage)? 'paginator-disabled' : ''" (click)="next()">
+          <img src="assets/img/right.png" style="width:14px" alt="">
+        </div>
+        <div class="paginator-option" [ngClass]="(currentPage==numberOfPage)? 'paginator-disabled' : ''" (click)="goToPage(numberOfPage)">
+          <img src="assets/img/double-right.png" style="width:14px" alt="">
+        </div>
+
+
+    </div>
+
+    <span  style="font-size: 12px;font-weight:550;color:var(--primary)">Aller a</span>
+    <div class="go-to-page-wrapper">
+
+     <t-select
+      [selectedOption]="currentPage"
+      [options]="pageList"
+      (newvalue)="goToPage($event)">
+
+      </t-select>
+      <!-- <select class="form-select " aria-label="Default select example"
+      [(ngModel)]="currentPage"
+      (change)="goToPage($event.target)">
+      <ng-container *ngFor="let item of pageList">
+        <option [ngValue]="item">{{item}}</option>
+      </ng-container> -->
+    <!-- <option selected (click)="selectLanguage(item)">Open this select menu</option> -->
+
+    </div>
+  </div>
+
+</ng-container>

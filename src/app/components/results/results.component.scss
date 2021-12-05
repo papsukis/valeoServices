@@ -6,15 +6,15 @@
 
 }
 .result-list{
-  display:grid;
-  grid-template-columns: repeat(3,1fr);
-  grid-template-rows : repeat(autofill,minmax(200px,1fr));
-  gap : 10px;
+  // display:grid;
+  // grid-template-columns: repeat(3,1fr);
+  // grid-template-rows : repeat(autofill,minmax(200px,1fr));
+  // gap : 10px;
   height: 100%;
   overflow: auto;
 }
 .card{
-  height: 680px;
+  // height: 680px;
 }
 .float{
 	position:fixed;

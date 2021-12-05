@@ -21,6 +21,11 @@ export class BodyComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  scrollTo(section:string) {
+    document.querySelector('#' + section)!
+    .scrollIntoView();
+  }
+
   onSearchByReference(reference:string){
     let req=new ValeoRequest();
     req.params=this.separateString(reference)

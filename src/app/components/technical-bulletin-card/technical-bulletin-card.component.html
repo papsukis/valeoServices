@@ -1,4 +1,4 @@
-
+<!--
 <div class="container">
   <mat-card style="height: 100%;">
     <mat-card-title>{{technicalDocument.title}}</mat-card-title>
@@ -69,4 +69,91 @@
     </mat-card-actions>
   </mat-card>
 
+</div> -->
+
+<div class="card" style="width: 100%;">
+  <div class="card-header text-center">
+    Bulletin technique
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{technicalDocument.title}}</h5>
+    <p class="card-subtitle mb-2 text-muted">{{technicalDocument.brand}}</p>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="form-group">
+        <label for="referenceInput">Nom produit</label>
+        <div class="input-group input-group-sm mb-3 reference">
+
+          <input
+
+          type="text"
+          class="form-control form-control-sm"
+          id="referenceInput"
+          [(ngModel)]="technicalDocument.product"
+          disabled>
+          <div class="input-group-text" style="cursor: pointer;" id="inputGroup-sizing-sm"(click)="copyToClipboard(technicalDocument.product)">
+
+            <mat-icon>content_copy</mat-icon>
+          </div>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label for="referenceInput">Ligne de produits</label>
+      <div class="input-group input-group-sm mb-3 reference">
+
+          <input
+          placeholder="Reference"
+          type="text"
+          class="form-control form-control-sm"
+          id="referenceInput"
+          [(ngModel)]="technicalDocument.lob"
+          disabled>
+          <div class="input-group-text"style="cursor: pointer;" id="inputGroup-sizing-sm"(click)="copyToClipboard(technicalDocument.lob)">
+
+            <mat-icon>content_copy</mat-icon>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="snippet-wrapper"  [innerHTML]="technicalDocument.snippet">
+        </div>
+
+   </li>
+
+  </ul>
+
+
+
+
+
+
+
+  <div class="card-body">
+    <div style="display: flex;justify-content: space-around; align-items: center;">
+
+        <button mat-mini-fab color="primary" (click)="goToLink(technicalDocument.documents[0])">
+          <t-tooltip tooltip="Document"><mat-icon>description</mat-icon></t-tooltip>
+
+        </button>
+
+
+      <button mat-mini-fab color="primary"  (click)="goToLink(technicalDocument.url)">
+        <t-tooltip tooltip="Url">
+        <mat-icon>link</mat-icon>
+      </t-tooltip>
+      </button>
+
+
+      <button mat-mini-fab color="primary"  (click)="open()">
+        <t-tooltip tooltip="References">
+        <mat-icon>open_in_new</mat-icon>
+        </t-tooltip>
+
+      </button>
+    </div>
+  </div>
 </div>

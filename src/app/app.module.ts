@@ -26,6 +26,12 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
+import { TTooltipComponent } from './components/t-tooltip/t-tooltip.component';
+import { RefsDialogComponent } from './components/refs-dialog/refs-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { TSelectComponent } from './components/t-select/select.component';
+import { ScrollSpyDirective } from './directives/scroll-spy.directive';
 
 @NgModule({
   declarations: [
@@ -37,10 +43,16 @@ import { ToastrModule } from 'ngx-toastr';
     TechnicalDocumentCardComponent,
     TechnicalBulletinCardComponent,
     FittingInstructionsCardComponent,
-
+    TTooltipComponent,
+    RefsDialogComponent,
+    PaginatorComponent,
+    TSelectComponent,
+    ScrollSpyDirective
   ],
   imports: [
     BrowserModule,
+
+    MatDialogModule,
     AppRoutingModule,
     HttpClientModule,
     MatDividerModule,

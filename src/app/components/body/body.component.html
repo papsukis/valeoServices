@@ -9,8 +9,8 @@
   </div>
   <mat-divider ></mat-divider>
   <div class="results">
-    
-    <results [resultsList]="result"></results>
+
+    <results [resultsList]="result" (scrollEvent)="scrollTo($event)"></results>
   </div>
 
 
