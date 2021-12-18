@@ -30,7 +30,7 @@ export class FooterPaginationComponent implements OnInit {
     //Add '${implements OnChanges}' to the class.
     console.log(changes)
     let newResults : TotalResults=changes.totalResults.currentValue
-    let oldResults : TotalResults=changes.totalResult.previousValue
+    let oldResults : TotalResults=changes.firstChange?changes.totalResults.currentValue:changes.totalResults.previousValue
     if(changes.totalResults){
     this.maxResults=newResults.technical_document;
     if(newResults.technical_bulletin>this.maxResults)

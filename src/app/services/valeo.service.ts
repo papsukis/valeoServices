@@ -5,6 +5,8 @@ import { baseUrl, byFamily, byLineofBusiness, byName, byRef, Credentials, creden
 import { concatMap } from 'rxjs/operators';
 import { ValeoRequest } from '../models/request';
 import { ValeoResponse } from '../models/response';
+import { TokenStorageService } from './token-storage.service';
+import { of } from 'rxjs';
 
 export class token{
   token_type : string="";
@@ -17,17 +19,23 @@ export class token{
 export class ValeoService {
 
   credentials : Credentials;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private tokenStorage:TokenStorageService) {
     this.credentials=credentials;
   }
 
   getToken() : Observable<token>{
+  if(!this.tokenStorage.isLogged())
+  {
   var formData: any = new FormData();
   formData.append("client_id", this.credentials.clientId);
   formData.append("client_secret", this.credentials.password);
   formData.append("grant_type", this.credentials.grantType);
 
   return this.http.post<token>(tokenUrl,formData);
+  }
+  else{
+    return of({token_type : 'Bearer',expires_in:300 , access_token :this.tokenStorage.getToken()})
+  }
   }
 
   getByReference(parameters:ValeoRequest){
@@ -42,6 +50,9 @@ export class ValeoService {
 
 
     return this.getToken().pipe(concatMap(tok=>{
+      if(!this.tokenStorage.isLogged()){
+        this.tokenStorage.saveToken(tok.access_token);
+      }
       const header = new HttpHeaders({
                'Accept' : 'application/json',
                'Authorization' : tok.token_type + ' ' + tok.access_token
@@ -61,6 +72,9 @@ export class ValeoService {
       params= params.append("name%5B%5D",p)
     })
     return this.getToken().pipe(concatMap(tok=>{
+      if(!this.tokenStorage.isLogged()){
+        this.tokenStorage.saveToken(tok.access_token);
+      }
       const header = new HttpHeaders({
                'Accept' : 'application/json',
                'Authorization' : tok.token_type + ' ' + tok.access_token
@@ -78,6 +92,9 @@ export class ValeoService {
       params= params.append("family%5B%5D",p)
     })
     return this.getToken().pipe(concatMap(tok=>{
+      if(!this.tokenStorage.isLogged()){
+        this.tokenStorage.saveToken(tok.access_token);
+      }
       const header = new HttpHeaders({
                'Accept' : 'application/json',
                'Authorization' : tok.token_type + ' ' + tok.access_token
@@ -95,6 +112,9 @@ export class ValeoService {
       params= params.append("lob%5B%5D",p)
     })
     return this.getToken().pipe(concatMap(tok=>{
+      if(!this.tokenStorage.isLogged()){
+        this.tokenStorage.saveToken(tok.access_token);
+      }
       const header = new HttpHeaders({
                'Accept' : 'application/json',
                'Authorization' : tok.token_type + ' ' + tok.access_token
