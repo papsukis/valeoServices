@@ -32,8 +32,6 @@ export class TokenStorageService {
 
 
   public saveToken(token: string): void {
-
-
     localStorage.setItem(TOKEN_KEY, token);
   }
 
