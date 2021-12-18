@@ -38,6 +38,6 @@ export class RefsDialogComponent implements OnInit {
   pageChanged(page:number){
     this.currentPage=page;
     this.filteredRefs=this.refSearch.length>0?this.refs.filter(x=>x.includes(this.refSearch)):this.refs
-    this.currentRefs=this.filteredRefs.splice(this.currentPage,this.numberPerPage)
+    this.currentRefs=this.refs.splice(this.currentPage,this.numberPerPage)
   }
 }

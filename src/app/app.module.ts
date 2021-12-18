@@ -32,6 +32,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { TSelectComponent } from './components/t-select/select.component';
 import { ScrollSpyDirective } from './directives/scroll-spy.directive';
+import { FooterPaginationComponent } from './components/footer-pagination/footer-pagination.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ScrollSpyDirective } from './directives/scroll-spy.directive';
     RefsDialogComponent,
     PaginatorComponent,
     TSelectComponent,
-    ScrollSpyDirective
+    ScrollSpyDirective,
+    FooterPaginationComponent
   ],
   imports: [
     BrowserModule,

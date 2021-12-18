@@ -2,29 +2,73 @@
 <div class="wrapper">
 
 
-  <div class="result-list row">
+  <div class="result-list row" *ngIf="!isEmpty()">
+    <div #top id="top" class="top"></div>
+    <mat-accordion>
 
-    <ng-container *ngFor="let item of resultsList.technical_document">
-      <div class='col-sm-12 col-lg-4 col-xl-3 row' id="technical_document">
+      <mat-expansion-panel hideToggle [expanded]="true" (opened)="scrollToTop()" *ngIf="resultsList.technical_document && resultsList.technical_document.length>0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Documents techniques
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Total de resultats {{resultsList.total_results.technical_document}}</p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="res-wrapper">
+          <ng-container *ngFor="let item of resultsList.technical_document">
+              <technical-document-card [technicalDoc]="item" style="width: 75%;height: 100%;" ></technical-document-card>
+          </ng-container>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel hideToggle (opened)="scrollToTop()" *ngIf="resultsList.technical_bulletin && resultsList.technical_bulletin.length>0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Bulletins techniques
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Total de resultats {{resultsList.total_results.technical_bulletin}}</p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="res-wrapper" >
+          <ng-container *ngFor="let item of resultsList.technical_bulletin">
+            <technical-bulletin-card [technicalDoc]="item" style="width: 75%;height: 100%;"></technical-bulletin-card>
+          </ng-container>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel hideToggle (opened)="scrollToTop()" *ngIf="resultsList.fitting_instruction && resultsList.fitting_instruction.length>0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Notice de montage
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Total de resultats {{resultsList.total_results.fitting_instruction}}</p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="res-wrapper">
+          <ng-container *ngFor="let item of resultsList.fitting_instruction">
+              <fitting-instructions-card [technicalDoc]="item" style="width: 75%;height: 100%;"></fitting-instructions-card>
+          </ng-container>
+        </div>
+
+
+
+      </mat-expansion-panel>
+    </mat-accordion>
+      <!-- <div class='col-sm-12 col-lg-4 col-xl-3 row' id="technical_document">
         <technical-document-card [technicalDoc]="item" class="card"></technical-document-card>
-      </div>
-    </ng-container>
-    <ng-container *ngFor="let item of resultsList.technical_bulletin">
-      <div class='col-sm-12 col-lg-4 col-xl-3 row' id="technical_bulletin">
-          <technical-bulletin-card [technicalDoc]="item" class="card"></technical-bulletin-card>
-      </div>
+      </div> -->
 
-    </ng-container>
-    <ng-container *ngFor="let item of resultsList.fitting_instruction">
-      <div class='col-sm-12 col-lg-4 col-xl-3 row' id="fitting_instruction">
-        <fitting-instructions-card [technicalDoc]="item" class="card"></fitting-instructions-card>      </div>
 
-    </ng-container>
+
   </div>
   <div class="pagination">
-
+    <footer-pagination [totalResults]="resultsList.total_results" [currentPage]="currentPage" (onClick)="pageChanged($event)"></footer-pagination>
   </div>
 </div>
-<a class="float" href="#top">
+<a class="float" (click)="scrollToTop()" >
   <mat-icon class="my-float">navigation</mat-icon>
 

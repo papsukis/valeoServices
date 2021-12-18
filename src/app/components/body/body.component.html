@@ -1,16 +1,15 @@
-<a name="top"></a>
-  <div class="row">
+
+  <div class="wrap">
     <filters
     (searchByReference)="onSearchByReference($event)"
     (searchByProductName)="onSearchByProductName($event)"
     (searchByProductFamily)="onSearchByProductFamily($event)"
     (searchByLineOfBusiness)="onSearchByLineOfBusiness($event)"
     (selectLanguage)="onSelectLanguage($event)"></filters>
-  </div>
+
   <mat-divider ></mat-divider>
   <div class="results">
-
-    <results [resultsList]="result" (scrollEvent)="scrollTo($event)"></results>
+    <a #top></a>
+    <results [resultsList]="result"[currentPage]="(currentReq |async)!.page" (scrollEvent)="scrollTo($event)" (onClick)="pageChanged($event)" ></results>
   </div>
-
-
+</div>

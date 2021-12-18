@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FittingInstruction } from 'src/app/models/fitting-instructions';
 import { Clipboard } from "@angular/cdk/clipboard"
+import { MatDialog } from '@angular/material/dialog';
+import { RefsDialogComponent } from '../refs-dialog/refs-dialog.component';
 
 @Component({
   selector: 'fitting-instructions-card',
@@ -19,7 +21,7 @@ export class FittingInstructionsCardComponent implements OnInit {
 
   }
   currentRefs:string[]=[];
-  constructor(private clipboard: Clipboard) { }
+  constructor(private clipboard: Clipboard,public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -32,5 +34,16 @@ export class FittingInstructionsCardComponent implements OnInit {
   }
   goToLink(url: string){
     window.open(url, "_blank");
+}
+open(){
+  const dialogRef = this.dialog.open(RefsDialogComponent, {
+
+    data: {refs: this.currentRefs}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+
+  });
 }
 }

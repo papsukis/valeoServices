@@ -1,4 +1,4 @@
-
+<!--
 <div class="container">
   <mat-card style="height: 100%;">
     <mat-card-title>{{technicalDocument.title}}</mat-card-title>
@@ -76,5 +76,116 @@
     </mat-card-actions>
   </mat-card>
 
-</div>
+</div> -->
 
+<div class="card" style="width: 100%;height: 750px;">
+  <div class="card-header text-center">
+    {{technicalDocument.title}}
+  </div>
+  <div class="card-body text-center" style="max-height:60px">
+    <h3 class="card-title">{{technicalDocument.brand}}</h3>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="form-group">
+        <label for="referenceInput">Nom produit</label>
+        <div class="input-group input-group-sm mb-3 reference">
+
+          <input
+
+          type="text"
+          class="form-control form-control-sm"
+          id="referenceInput"
+          [(ngModel)]="technicalDocument.product"
+          disabled>
+          <div class="input-group-text" style="cursor: pointer;" id="inputGroup-sizing-sm"(click)="copyToClipboard(technicalDocument.product)">
+
+            <mat-icon>content_copy</mat-icon>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+      <label for="referenceInput">Famille de produit</label>
+      <div class="input-group input-group-sm mb-3 reference">
+
+        <input
+
+        type="text"
+        class="form-control form-control-sm"
+        id="referenceInput"
+        [(ngModel)]="technicalDocument.component"
+        disabled>
+        <div class="input-group-text" style="cursor: pointer;" id="inputGroup-sizing-sm"(click)="copyToClipboard(technicalDocument.component)">
+
+          <mat-icon>content_copy</mat-icon>
+        </div>
+      </div>
+      </div>
+
+    </li>
+
+
+    <li class="list-group-item">
+      <div class="snippet-wrapper"  [innerHTML]="technicalDocument.snippet.fi_applications">
+        </div>
+   </li>
+   <li class="list-group-item">
+    <div class="snippet-wrapper"  [innerHTML]="technicalDocument.snippet.fi_caution">
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="snippet-wrapper"  [innerHTML]="technicalDocument.snippet.fi_fitting_instructions">
+        </div>
+      </li>
+    <li class="list-group-item">
+      <div class="snippet-wrapper"  [innerHTML]="technicalDocument.snippet.fi_after_the_assembly">
+      </div>
+    </li>
+
+    <!-- <li class="list-group-item">
+      <div class="snippet-wrapper">
+        <h4 class="title">Application</h4>
+        <span>{{technicalDocument.snippet.fi_applications}}</span>
+        <mat-divider inset></mat-divider>
+        <h4 class="title">Mesures</h4>
+        <span>{{technicalDocument.snippet.fi_caution}}</span>
+        <mat-divider inset></mat-divider>
+        <h4 class="title">Instructions de montage</h4>
+        <span>{{technicalDocument.snippet.fi_fitting_instructions}}</span>
+        <mat-divider inset></mat-divider>
+        <h4 class="title">Apres assemblage</h4>
+        <span>{{technicalDocument.snippet.fi_after_the_assembly}}</span>
+
+      </div>
+
+
+   </li> -->
+
+  </ul>
+
+  <div class="card-body">
+    <div style="display: flex;justify-content: space-around; align-items: center;">
+
+        <button mat-mini-fab color="primary" (click)="goToLink(technicalDocument.documents[0])">
+          <t-tooltip tooltip="Document"><mat-icon>description</mat-icon></t-tooltip>
+
+        </button>
+
+
+      <button mat-mini-fab color="primary"  (click)="goToLink(technicalDocument.url)">
+        <t-tooltip tooltip="Url">
+        <mat-icon>link</mat-icon>
+      </t-tooltip>
+      </button>
+
+
+      <button mat-mini-fab color="primary"  (click)="open()" *ngIf="technicalDocument.refs.length>0">
+        <t-tooltip tooltip="References">
+        <mat-icon>open_in_new</mat-icon>
+        </t-tooltip>
+
+      </button>
+    </div>
+  </div>
+</div>

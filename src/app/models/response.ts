@@ -10,12 +10,14 @@ export class ValeoResponse{
   technical_document:TechnicalDocument[]=[]
   technical_bulletin:TechnicalBulletin[]=[]
   fitting_instruction:FittingInstruction[]=[]
+
+
 }
 
-class TotalResults{
-  technicalDocument :number =0;
-  technicalBulletin : number = 0;
-  fittingInstruction : number =0;
+export class TotalResults{
+  technical_document :number =0;
+  technical_bulletin : number = 0;
+  fitting_instruction : number =0;
 }
 
 export enum eLanguage{
